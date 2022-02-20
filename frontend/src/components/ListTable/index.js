@@ -35,8 +35,12 @@ const ListTable = () => {
   return (
     <>
       <Box width="full" overflow="auto">
-        <JobListFilter />
-        <Divider margin={"20px 0px"} />
+        {(jobs == [] || jobs) && (
+          <>
+            <JobListFilter /> <Divider margin={"20px 0px"} />
+          </>
+        )}
+
         <Table variant="simple">
           <Thead bg={"blue.500"}>
             <Tr>

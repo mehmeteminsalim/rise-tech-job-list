@@ -21,15 +21,6 @@ const Header = () => {
               <Box fontSize={"2xl"} fontWeight={"bold"}>
                 Mehmet Emin Salim
               </Box>
-              <Link href="https://github.com/mehmeteminsalim" isExternal>
-                Github <ExternalLinkIcon mx="2px" />
-              </Link>
-              <Link
-                href="https://www.linkedin.com/in/mehmeteminsalim/"
-                isExternal
-              >
-                Linkedin <ExternalLinkIcon mx="2px" />
-              </Link>
             </Box>
 
             <Flex alignItems={"center"}>
