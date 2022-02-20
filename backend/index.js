@@ -21,6 +21,8 @@ app.get("/priorities", (req, res) => {
   res.send(priorities);
 });
 
-app.listen(3002, () => {
-  console.log("Server listening on port 3002");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log("Server listening");
 });
