@@ -19,6 +19,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import JobService from "../../services/JobService";
 import { useContext, MainContext } from "../../context";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const schema = yup
   .object({
@@ -47,6 +49,15 @@ function priorityValueToName(value) {
 const CreateJobForm = () => {
   const toast = useToast();
   const { jobs, setJobs } = useContext(MainContext);
+  const [priorities, setPriorities] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/priorities`).then((res) => {
+      setPriorities(res.data);
+    });
+  }, []);
+
+  console.log(priorities);
 
   const {
     register,
