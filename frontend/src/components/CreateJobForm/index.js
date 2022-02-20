@@ -106,9 +106,14 @@ const CreateJobForm = () => {
             <FormControl isInvalid={errors.jobPriority}>
               <FormLabel htmlFor="job-priority">Job Priority</FormLabel>
               <Select {...register("jobPriority")} placeholder="Choose">
-                <option value="0">Urgent</option>
-                <option value="1">Regular</option>
-                <option value="2">Trivial</option>
+                {priorities &&
+                  priorities.map((priority, index) => {
+                    return (
+                      <option key={index} value={priority.value}>
+                        {priority.name}
+                      </option>
+                    );
+                  })}
               </Select>
               {errors.jobPriority && (
                 <FormErrorMessage>

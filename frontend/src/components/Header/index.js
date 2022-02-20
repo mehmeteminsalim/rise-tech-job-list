@@ -6,8 +6,9 @@ import {
   Stack,
   useColorMode,
   Container,
+  Link,
 } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { ExternalLinkIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -16,7 +17,20 @@ const Header = () => {
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Container maxW={"6xl"}>
           <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-            <Box>Logo</Box>
+            <Box display={"flex"} alignItems={"center"} gap={4}>
+              <Box fontSize={"2xl"} fontWeight={"bold"}>
+                Mehmet Emin Salim
+              </Box>
+              <Link href="https://github.com/mehmeteminsalim" isExternal>
+                Github <ExternalLinkIcon mx="2px" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/mehmeteminsalim/"
+                isExternal
+              >
+                Linkedin <ExternalLinkIcon mx="2px" />
+              </Link>
+            </Box>
 
             <Flex alignItems={"center"}>
               <Stack direction={"row"} spacing={7}>

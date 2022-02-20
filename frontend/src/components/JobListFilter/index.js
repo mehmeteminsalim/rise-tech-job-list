@@ -12,6 +12,7 @@ import {
   Select,
   SimpleGrid,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { MainContext, useContext } from "../../context";
 import JobService from "../../services/JobService";
@@ -21,6 +22,13 @@ const JobListFilter = () => {
 
   const [selectValue, setSelectValue] = useState("");
   const [inputValue, setInputValue] = useState("");
+  const [priorities, setPriorities] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/priorities`).then((res) => {
+      setPriorities(res.data);
+    });
+  }, []);
 
   useEffect(() => {
     filterJobList();
@@ -54,9 +62,14 @@ const JobListFilter = () => {
               onChange={(e) => setSelectValue(e.target.value)}
             >
               <option value="">Choose</option>
-              <option value="0">Urgent</option>
-              <option value="1">Regular</option>
-              <option value="2">Trivial</option>
+              {priorities &&
+                priorities.map((priority, index) => {
+                  return (
+                    <option key={index} value={priority.value}>
+                      {priority.name}
+                    </option>
+                  );
+                })}
             </Select>
           </Box>
         </SimpleGrid>
